@@ -29,16 +29,17 @@
                         <form id="loginForm">
                             <div class="form-group">
                                 <label for="" class="sr-only">E-mail</label>
-                                <input type="text" placeholder="Enter Email" class="form-control checkField">
+                                <input type="text" name="email" placeholder="Enter Email" class="form-control checkField">
                                 <span></span>
                             </div>
 
                             <div class="from-group">
                                 <label for="" class="sr-only"></label>
-                                <input type="password" placeholder="Password" class="form-control checkField" >
+                                <input type="password" name="password" placeholder="Password" class="form-control checkField" >
                                 <span></span>
                             </div>
 
+                            
                             <button type="submit" class="btn btn-primary btn-block">Submit</button>
 
                         </form>

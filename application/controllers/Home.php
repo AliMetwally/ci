@@ -3,34 +3,51 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
+	 public function __construct(){
+        parent::__construct();        
+        $this->load->model('model_db');
+    }
 
-
+	 
 	public function index()
 	{
 		$this->load->view('home');		
 	
 	}
 
+	
 	public function login()
 	{
-		//$this->util_lib->ajaxOnly();
-		echo 'test';
-	}
+		// ensure the ajax request
+		$this->util_lib->ajaxOnly();
+
+		// $json to be returned
+		$json = array();
+
+		// to clear error tag sufix and prefix like <p>
+		$this->form_validation->set_error_delimiters('','');
+
+		// set validation rules
+		$this->form_validation->set_rules('email', 'E-mail', ['required', 'trim', 'vaild_email']);
+		$this->form_validation->set_rules('password', 'Password', 'require');
+
+		if ($this->form_validation->run() == FALSE) {
+			 // faild scenario 
+			 $json['msg'] = 'required fileds are empty';
+			 $json['status'] = 0;
+		}
+		
+		else {
+			 // success scenario 
+			 // server validation 
+			 
+		}
+
+		$this->output->set_content_type('application/json')->set_output(json_encode($json));
+
+		
+		
+	} // end of login
 
 	
 	
