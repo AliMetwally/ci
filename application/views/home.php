@@ -26,7 +26,7 @@
                 <div class="col-sm-6 col-sm-offset-3">
                     <div class="bg-primary text-center">error</div>
                     <div class="form-bottom">
-                        <form id="loginForm">
+                        <form id="loginForm" action="<?= base_url('home/login')?> >
                             <div class="form-group">
                                 <label for="" class="sr-only">E-mail</label>
                                 <input type="text" name="email" placeholder="Enter Email" class="form-control checkField">
